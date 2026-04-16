@@ -1,41 +1,24 @@
 package fr.isep.aerien;
-
-/**
- * Gère le lien entre un passager et son vol.
- */
 public class Reservation {
-    private String numeroReservation;
-    private String dateReservation;
-    private String statut;
-    private Vol vol; // Association avec la classe Vol
 
-    // Constructeur (Méthode "Create" du CRUD)
-    public Reservation(String numeroReservation, String dateReservation, Vol vol) {
-        this.numeroReservation = numeroReservation;
-        this.dateReservation = dateReservation;
+    private static int compteur = 1;
+    private int numeroReservation;
+    private Passager passager;
+    private Vol vol;
+
+    public Reservation(Passager passager, Vol vol) {
+        this.numeroReservation = compteur++;
+        this.passager = passager;
         this.vol = vol;
-        this.statut = "En attente"; // Statut par défaut [cite: 62]
     }
 
-    // --- Méthodes demandées par le diagramme [cite: 64, 77] ---
-
-    public void confirmerReservation() {
-        this.statut = "Confirmée";
-        System.out.println("La réservation " + numeroReservation + " est maintenant confirmée.");
+    public int getNumeroReservation() {
+        return numeroReservation;
     }
 
-    public void annulerReservation() {
-        this.statut = "Annulée";
-        System.out.println("La réservation " + numeroReservation + " a été annulée.");
+    public String obtenirReservations() {
+        return "Reservation " + numeroReservation +
+               " | Passager: " + passager.obtenirInfos() +
+               " | " + vol.obtenirVol();
     }
-
-    public void modifierReservation(String nouvelleDate) {
-        this.dateReservation = nouvelleDate;
-        System.out.println("Date de réservation mise à jour.");
-    }
-
-    // Getters et Setters pour le CRUD
-    public String getNumeroReservation() { return numeroReservation; }
-    public String getStatut() { return statut; }
-    public Vol getVol() { return vol; }
 }

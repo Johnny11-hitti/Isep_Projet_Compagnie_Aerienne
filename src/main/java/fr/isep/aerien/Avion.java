@@ -1,17 +1,25 @@
 package fr.isep.aerien;
 
 public class Avion {
-    private String immatriculation;
-    private String modele;
-    private int capacite;
 
-    public Avion(String imm, String mod, int cap) {
-        this.immatriculation = imm;
-        this.modele = mod;
-        this.capacite = cap;
+    private int id;
+    private String modele;
+    private boolean disponible = true;
+
+    public Avion(int id, String modele) {
+        this.id = id;
+        this.modele = modele;
     }
 
     public boolean verifierDisponibilite() {
-        return true; 
+        return disponible;
+    }
+
+    public void affecterVol() {
+        disponible = false;
+    }
+
+    public int getId() {
+        return id;
     }
 }

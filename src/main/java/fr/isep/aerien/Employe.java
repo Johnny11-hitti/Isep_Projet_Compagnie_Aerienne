@@ -1,18 +1,10 @@
 package fr.isep.aerien;
 
-public class Employe extends Personne {
-    private String numeroEmploye;
-    private String dateEmbauche;
+public abstract class Employe extends Personne {
 
-    public Employe(String id, String nom, String adresse, String contact, String numEmp, String date) {
-        super(id, nom, adresse, contact); // Appelle le constructeur de Personne
-        this.numeroEmploye = numEmp;
-        this.dateEmbauche = date;
+    public Employe(int id, String nom, String prenom) {
+        super(id, nom, prenom);
     }
 
-    public String obtenirRole() {
-        return "Employé Général";
-    }
-    
-    // Getters et Setters pour CRUD
+    public abstract String obtenirRole();
 }

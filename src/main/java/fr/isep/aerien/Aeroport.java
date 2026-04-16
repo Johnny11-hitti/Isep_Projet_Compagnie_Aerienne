@@ -1,22 +1,35 @@
 package fr.isep.aerien;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Aeroport {
+
+    private int id;
     private String nom;
     private String ville;
-    private String description;
 
-    public Aeroport(String nom, String ville, String description) {
+    private List<Vol> volsDepart = new ArrayList<>();
+    private List<Vol> volsArrivee = new ArrayList<>();
+
+    public Aeroport(int id, String nom, String ville) {
+        this.id = id;
         this.nom = nom;
         this.ville = ville;
-        this.description = description;
     }
 
-    // Méthode demandée par le diagramme
-    public void affecterVol() {
-        System.out.println("Le vol a été affecté à l'aéroport : " + nom);
+    public void ajouterVolDepart(Vol vol) {
+        volsDepart.add(vol);
     }
 
-    // Getters pour le CRUD
-    public String getNom() { return nom; }
-    public String getVille() { return ville; }
+    public void ajouterVolArrivee(Vol vol) {
+        volsArrivee.add(vol);
+    }
+
+    public String obtenirInfos() {
+        return "Aéroport: " + nom + " | Ville: " + ville;
+    }
+
+    public int getId() {
+        return id;
+    }
 }
